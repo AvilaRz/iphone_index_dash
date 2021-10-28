@@ -14,7 +14,7 @@ import pandas as pd
 import numpy as np
 
 from app import app, server
-from layout import navbar, sidebar
+from layout import navbar, sidebar, page_1
 import callbacks
 
 
@@ -29,7 +29,7 @@ app.layout = html.Div(
         dbc.Row(
             [
                 dbc.Col([sidebar], width=2), 
-                dbc.Col([content])
+                dbc.Col([content], width=10)
             ]
         ),
         
@@ -56,11 +56,10 @@ def toggle_navbar_collapse(n, is_open):
 )
 def render_page_content(pathname):
     if pathname == "/":
-        return [html.H1("Days to buy an iPhone", className="ml-4"), 
-                dcc.Graph(id='iphone-graph-average-price')]
+        return [page_1]
 
     elif pathname == "/index":
-        return [html.H1("Index", className="ml-4")]
+        return [html.H1("The iPhone Index", className="ml-4")]
     
     return dbc.Jumbotron(
         [

@@ -25,9 +25,9 @@ SIDEBAR_STYLE = {
 
 CONTENT_STYLE = {
     "top":0,
-    "margin-top":'2rem',
-    "margin-left": "3rem",
-    "margin-right": "2rem",
+    "margin-top":'1rem',
+    "margin-left": "1rem",
+    "margin-right": "1rem",
 }
 
 ### Sidebar ###
@@ -97,3 +97,91 @@ navbar = dbc.Navbar(
 ################# Days to buy an iphone ####################
 ############################################################
 
+### Cards ###
+
+iphone_price_card = dbc.Card(
+    dbc.CardBody(
+        [
+            html.H6("Price (USD)", className="card-title"),
+            html.H3('xxx', className='card-text')
+        ]
+    ),
+    color='primary',
+    inverse=True
+)
+
+minimum_wage_card = dbc.Card(
+    dbc.CardBody(
+        [
+            html.H6("Minimum Wage", className="card-title"),
+            html.H3('xxx', className='card-text')
+        ]
+    ),
+    color='primary',
+    inverse=True
+)
+
+average_wage_card = dbc.Card(
+    dbc.CardBody(
+        [
+            html.H6("Average Wage", className="card-title"),
+            html.H3('xxx', className='card-text')
+        ]
+    ),
+    color='primary',
+    inverse=True
+)
+
+minimum_wage_plot = dbc.Card(
+    dbc.CardBody(
+        [
+            html.H3("Minimum Wage Plot", className="card-title"),
+            dcc.Graph(id='iphone-graph-minimum-price')
+        ]
+    ),
+    color='#FFFFFF',
+    inverse=False
+)
+
+average_wage_plot = dbc.Card(
+    dbc.CardBody(
+        [
+            html.H3("Average Wage Plot", className="card-title"),
+            dcc.Graph(id='iphone-graph-average-price')
+        ]
+    ),
+    color='#FFFFFF',
+    inverse=False
+)
+
+### Layout Page 1
+
+page_1 = dbc.Container(
+    [
+        html.H1("Days needed to buy an iPhone", className="ml-4 mb-5"),
+
+
+        dbc.Row(
+            [
+                dbc.Col(iphone_price_card, width=3),
+                #dbc.Col(minimum_wage_card, width=3),
+                #dbc.Col(average_wage_card, width=3),
+            ],
+            className="ml-3 mr-3"
+        ),
+        dbc.Row(
+            [
+                dbc.Col(minimum_wage_plot)
+            ],
+            className="ml-3 mr-3 mt-5 mb-5"
+        ),
+        dbc.Row(
+            [
+                dbc.Col(average_wage_plot)
+            ],
+            className="ml-3 mr-3 mt-5 mb-5"
+        ),
+    ],
+    fluid=True,
+    style=CONTENT_STYLE
+)
